@@ -12,8 +12,8 @@ gem 'ip_auth'
 
 And then execute:
 
-```ruby
-    $ bundle
+```shell
+$ bundle
 ```
 
 #### Post Installation
