@@ -6,15 +6,22 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'ip_auth'
+```ruby
+gem 'ip_auth'
+```
 
 And then execute:
 
+```ruby
     $ bundle
+```
 
-Or install it yourself as:
+#### Post Installation
 
-    $ gem install ip_auth
+```shell
+rails generate ip_auth:migration
+rake db:migrate
+```
 
 ## Usage
 
