@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "ip_auth"
   spec.version       = IpAuth::VERSION
   spec.authors       = ["Anand Mohanaveeramani"]
-  spec.email         = ["anand@chronus.com"]
+  spec.email         = ["anand.mohanaveeramani@gmail.com"]
   spec.description   = %q{App based IP authentication system}
   spec.summary       = %q{Customizable IP authentication system based on application's model and logic}
   spec.homepage      = "https://github.com/anand-mohanaveeramani/ip_auth"
