@@ -19,8 +19,8 @@ $ bundle
 #### Post Installation
 
 ```shell
-rails generate ip_auth:migration
-bundle exec rake db:migrate
+$ rails generate ip_auth:migration
+$ bundle exec rake db:migrate
 ```
 
 ## Usage
