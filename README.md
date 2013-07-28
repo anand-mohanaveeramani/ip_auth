@@ -20,7 +20,7 @@ $ bundle
 
 ```shell
 rails generate ip_auth:migration
-rake db:migrate
+bundle exec rake db:migrate
 ```
 
 ## Usage
