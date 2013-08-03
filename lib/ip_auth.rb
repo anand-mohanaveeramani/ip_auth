@@ -6,6 +6,7 @@ require "ipaddr"
 
 # ip_auth requires
 require "ip_auth/active_record/extension"
+require "ip_auth/exception/general"
 require "ip_auth/ip"
 require "ip_auth/ip_config"
 require "ip_auth/ip_config_unit"

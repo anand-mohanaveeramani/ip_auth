@@ -30,6 +30,7 @@ module IpAuth
     end
 
     def set_configuration(options = {})
+      raise IpAuth::Exception::General.new("Ip configuration is not a Array") unless options[:config].is_a?(Array)
       @decoded_setting_valid = false
       self.update(setting: get_encoded_string(options[:config]))
       get_configuration(options)
