@@ -5,7 +5,31 @@ module IpAuth
 
       def ip_authenticatable
         class_eval do
-          has_many :ip_configs, as: :ip_authenticatable, dependent: :destroy, class_name: "IpAuth::IpConfig"
+          has_one :ip_config, as: :ip_authenticatable, dependent: :destroy, class_name: "IpAuth::IpConfig"
+
+          def get_ip_config(options = {})
+            ip_conf = get_or_create_ip_config
+            options.merge!(method: :get)
+            options.reverse_merge!(raise: true)
+            ip_conf.configuration(options)
+          end
+
+          def set_ip_config!(config, options = {})
+            ip_conf = get_or_create_ip_config
+            options.merge!(method: :set, config: config)
+            options.reverse_merge!(raise: true)
+            ip_conf.configuration(options)
+          end
+
+          def set_ip_config(config, options = {})
+            set_ip_config!(config, options.merge(raise: false))
+          end
+
+          private
+
+            def get_or_create_ip_config
+              IpAuth::IpConfig.where(ip_authenticatable: self).first_or_create(setting: "")
+            end
         end
       end
     end
