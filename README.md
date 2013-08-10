@@ -1,6 +1,6 @@
 # IpAuth
 
-TODO: Write a gem description
+TODO
 
 ## Installation
 
@@ -25,7 +25,7 @@ $ bundle exec rake db:migrate
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO
 
 ## Contributing
 

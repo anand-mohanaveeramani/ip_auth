@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = IpAuth::VERSION
   spec.authors       = ["Anand Mohanaveeramani"]
   spec.email         = ["anand.mohanaveeramani@gmail.com"]
-  spec.description   = %q{App based IP authentication system}
-  spec.summary       = %q{Customizable IP authentication system based on application's model and logic}
+  spec.description   = %q{App based IP authorization system}
+  spec.summary       = %q{Customizable IP authorization system based on application's model and logic}
   spec.homepage      = "https://github.com/anand-mohanaveeramani/ip_auth"
   spec.license       = "MIT"
 
