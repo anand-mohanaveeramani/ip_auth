@@ -18,5 +18,10 @@ module IpAuth
       self.ip == other.ip
     end
     alias_method :eql?, :==
+
+    def to_s
+      self.ip.to_s
+    end
+    alias_method :inspect, :to_s
   end
 end
