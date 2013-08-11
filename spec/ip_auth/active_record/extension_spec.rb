@@ -15,9 +15,34 @@ describe ActiveRecord::Base do
   context "testing interface on a ip authorizable model" do
     before(:each) do
       clean_database!
+      @org = create :organization
+      # TODO : formatting the get
+      @test_settings_1 = [ActiveSupport::HashWithIndifferentAccess.new({type: "range", start: "10.0.0.0", end: "10.0.0.10"})]
     end
 
-    it "" do
+    it "should respond to get_ip_config" do
+      @org.respond_to?(:get_ip_config).should be_true
+      @org.get_ip_config.should eq([])
+    end
+
+    it "should respond to set_ip_config" do
+      @org.respond_to?(:set_ip_config).should be_true
+      @org.set_ip_config @test_settings_1
+      @org.get_ip_config.should eq(@test_settings_1)
+    end
+
+    it "should repond to failure of set_ip_config with false" do
+      @org.set_ip_config(1).should be_false
+    end
+
+    it "should respond to set_ip_config bang" do
+      @org.respond_to?(:set_ip_config!).should be_true
+      @org.set_ip_config! @test_settings_1
+      @org.get_ip_config.should eq(@test_settings_1)
+    end
+
+    it "should repond to failure of set_ip_config! with exception" do
+      expect { @org.set_ip_config!(1) }.to raise_error(IpAuth::Exception::General)
     end
   end
 end
