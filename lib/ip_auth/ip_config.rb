@@ -41,10 +41,7 @@ module IpAuth
     end
 
     def update_decoded_setting
-      @decoded_setting = []
-      self.setting.split(IP_CONFIG_UNIT_SEPARATOR).each do |unit_str|
-        @decoded_setting << IpAuth::IpConfigUnit.new(JSON.load(unit_str))
-      end
+      @decoded_setting = self.setting.split(IP_CONFIG_UNIT_SEPARATOR).map{|unit_str| IpAuth::IpConfigUnit.new(JSON.load(unit_str))}
       @decoded_setting_valid = true
     end
   end
