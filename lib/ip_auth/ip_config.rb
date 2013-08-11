@@ -24,30 +24,28 @@ module IpAuth
       end
     end
 
-    private
+    def get_configuration(options = {})
+      update_decoded_setting unless @decoded_setting_valid
+      @decoded_setting
+    end
 
-      def get_configuration(options = {})
-        update_decoded_setting unless @decoded_setting_valid
-        @decoded_setting
-      end
+    def set_configuration(options = {})
+      raise IpAuth::Exception::General.new("Ip configuration is not a Array") unless options[:config].is_a?(Array)
+      @decoded_setting_valid = false
+      self.update(setting: get_encoded_string(options[:config]))
+      get_configuration(options)
+    end
 
-      def set_configuration(options = {})
-        raise IpAuth::Exception::General.new("Ip configuration is not a Array") unless options[:config].is_a?(Array)
-        @decoded_setting_valid = false
-        self.update(setting: get_encoded_string(options[:config]))
-        get_configuration(options)
-      end
+    def get_encoded_string(conf)
+      conf.collect(&:to_json).join(IP_CONFIG_UNIT_SEPARATOR)
+    end
 
-      def get_encoded_string(conf)
-        conf.collect(&:to_json).join(IP_CONFIG_UNIT_SEPARATOR)
+    def update_decoded_setting
+      @decoded_setting = []
+      self.setting.split(IP_CONFIG_UNIT_SEPARATOR).each do |unit_str|
+        @decoded_setting << IpAuth::IpConfigUnit.new(JSON.load(unit_str))
       end
-
-      def update_decoded_setting
-        @decoded_setting = []
-        self.setting.split(IP_CONFIG_UNIT_SEPARATOR).each do |unit_str|
-          @decoded_setting << IpAuth::IpConfigUnit.new(JSON.load(unit_str))
-        end
-        @decoded_setting_valid = true
-      end
+      @decoded_setting_valid = true
+    end
   end
 end
