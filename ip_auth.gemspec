@@ -26,4 +26,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "debugger"
   spec.add_development_dependency "ammeter"
   spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "factory_girl"
+  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "mysql2"
+  spec.add_development_dependency "pg"
 end

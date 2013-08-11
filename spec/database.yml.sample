@@ -1,0 +1,19 @@
+sqlite3:
+  adapter: sqlite3
+  database: ip_auth.sqlite3
+
+mysql:
+  adapter: mysql2
+  hostname: localhost
+  username: root
+  password:
+  database: ip_auth
+  charset: utf8
+  
+postgresql:
+  adapter: postgresql
+  hostname: localhost
+  username: postgres
+  password:
+  database: ip_auth
+  encoding: utf8
