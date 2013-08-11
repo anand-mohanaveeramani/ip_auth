@@ -11,4 +11,8 @@ describe IpAuth::Ip do
     ip_auth_ip_obj = IpAuth::Ip.new ip_address_obj
     ip_auth_ip_obj.to_string.should eq("192.168.2.0/24")
   end
+
+  it "should raise if invalid" do
+    expect { IpAuth::Ip.new "invalid" }.to raise_error
+  end
 end
