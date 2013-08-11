@@ -46,10 +46,16 @@ else
 end
 
 def clean_database!
-  models = [Organization, User]
+  models = [Organization, User, IpAuth::IpConfig]
   models.each do |model|
     ActiveRecord::Base.connection.execute "DELETE FROM #{model.table_name}"
   end
 end
 
 clean_database!
+
+require 'factories'
+
+RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+end
