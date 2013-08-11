@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     ip_auth (0.0.1.alpha)
+      ipaddress (= 0.8.0)
       rails (>= 3)
 
 GEM
@@ -64,6 +65,7 @@ GEM
       rspec (~> 2.13)
     hike (1.2.3)
     i18n (0.6.4)
+    ipaddress (0.8.0)
     listen (1.2.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)

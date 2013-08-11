@@ -2,7 +2,7 @@
 require "active_record"
 require "active_support"
 require "active_support/concern"
-require "ipaddr"
+require "ipaddress"
 
 # ip_auth requires
 require "ip_auth/active_record/extension"
