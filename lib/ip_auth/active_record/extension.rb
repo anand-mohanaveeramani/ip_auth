@@ -3,9 +3,9 @@ module IpAuth
     module Extension
       extend ActiveSupport::Concern
 
-      def ip_authenticatable
+      def ip_authorizable
         class_eval do
-          has_one :ip_config, as: :ip_authenticatable, dependent: :destroy, class_name: "IpAuth::IpConfig"
+          has_one :ip_config, as: :ip_authorizable, dependent: :destroy, class_name: "IpAuth::IpConfig"
 
           def get_ip_config(options = {})
             ip_conf = get_or_create_ip_config
@@ -28,7 +28,7 @@ module IpAuth
           private
 
             def get_or_create_ip_config
-              IpAuth::IpConfig.where(ip_authenticatable: self).first_or_create(setting: "")
+              IpAuth::IpConfig.where(ip_authorizable: self).first_or_create(setting: "")
             end
         end
       end

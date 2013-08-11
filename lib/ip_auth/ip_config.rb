@@ -7,7 +7,7 @@ module IpAuth
     attr_accessor :decoded_setting, :decoded_setting_valid
 
     # associations
-    belongs_to :ip_authenticatable, polymorphic: true
+    belongs_to :ip_authorizable, polymorphic: true
 
     # methods
 

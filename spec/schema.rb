@@ -1,12 +1,12 @@
 ActiveRecord::Schema.define :version => 0 do
   create_table "ip_configs", force: true do |t|
-    t.integer  "ip_authenticatable_id"
-    t.string   "ip_authenticatable_type"
+    t.integer  "ip_authorizable_id"
+    t.string   "ip_authorizable_type"
     t.text     "setting"
     t.datetime "created_at"
   end
 
-  add_index "ip_configs", ["ip_authenticatable_id", "ip_authenticatable_type"], name: "index_ip_configs_on_ip_authenticatable", using: :btree
+  add_index "ip_configs", ["ip_authorizable_id", "ip_authorizable_type"], name: "index_ip_configs_on_ip_authorizable", using: :btree
 
   create_table "organizations", force: true do |t|
     t.string   "name"
