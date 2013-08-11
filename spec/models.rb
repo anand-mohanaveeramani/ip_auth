@@ -1,3 +1,4 @@
+# Ip Authorizable model
 class Organization < ActiveRecord::Base
   ip_authenticatable
   has_many :users, dependent: :destroy
