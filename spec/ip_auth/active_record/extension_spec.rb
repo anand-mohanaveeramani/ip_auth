@@ -18,8 +18,8 @@ describe ActiveRecord::Base do
       @org = create :organization
       ip_start = "10.0.0.0"
       ip_end = "10.0.0.10"
-      @test_settings_1 = [ActiveSupport::HashWithIndifferentAccess.new({type: IpAuth::Type::RANGE, start: ip_start, end: ip_end})]
-      @test_settings_1_expect = [ActiveSupport::HashWithIndifferentAccess.new({type: IpAuth::Type::RANGE, start: IpAuth::Ip.new(ip_start), end: IpAuth::Ip.new(ip_end)})]
+      @test_settings_1 = [{type: IpAuth::Type::RANGE, start: ip_start, end: ip_end}]
+      @test_settings_1_expect = [{type: IpAuth::Type::RANGE, start: IpAuth::Ip.new(ip_start), end: IpAuth::Ip.new(ip_end)}].map{|h| h.stringify_keys }
     end
 
     it "should respond to get_ip_config" do
