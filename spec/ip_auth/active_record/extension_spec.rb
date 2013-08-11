@@ -16,8 +16,10 @@ describe ActiveRecord::Base do
     before(:each) do
       clean_database!
       @org = create :organization
-      # TODO : formatting the get
-      @test_settings_1 = [ActiveSupport::HashWithIndifferentAccess.new({type: "range", start: "10.0.0.0", end: "10.0.0.10"})]
+      ip_start = "10.0.0.0"
+      ip_end = "10.0.0.10"
+      @test_settings_1 = [ActiveSupport::HashWithIndifferentAccess.new({type: IpAuth::Type::RANGE, start: ip_start, end: ip_end})]
+      @test_settings_1_expect = [ActiveSupport::HashWithIndifferentAccess.new({type: IpAuth::Type::RANGE, start: IpAuth::Ip.new(ip_start), end: IpAuth::Ip.new(ip_end)})]
     end
 
     it "should respond to get_ip_config" do
@@ -28,7 +30,7 @@ describe ActiveRecord::Base do
     it "should respond to set_ip_config" do
       @org.respond_to?(:set_ip_config).should be_true
       @org.set_ip_config @test_settings_1
-      @org.get_ip_config.should eq(@test_settings_1)
+      @org.get_ip_config.should eq(@test_settings_1_expect)
     end
 
     it "should repond to failure of set_ip_config with false" do
@@ -38,7 +40,7 @@ describe ActiveRecord::Base do
     it "should respond to set_ip_config bang" do
       @org.respond_to?(:set_ip_config!).should be_true
       @org.set_ip_config! @test_settings_1
-      @org.get_ip_config.should eq(@test_settings_1)
+      @org.get_ip_config.should eq(@test_settings_1_expect)
     end
 
     it "should repond to failure of set_ip_config! with exception" do

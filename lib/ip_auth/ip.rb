@@ -13,5 +13,10 @@ module IpAuth
     def method_missing(*args)
       self.ip.send(*args)
     end
+
+    def ==(other)
+      self.ip == other.ip
+    end
+    alias_method :eql?, :==
   end
 end
